@@ -1,0 +1,9 @@
+LakeHouse Template-OpenSource
+Copyright (c) LakeHouse contributors
+
+This product includes software developed for the LakeHouse public open-source
+templates. Third-party dependencies are listed in package-lock.json and retain
+their own licenses.
+
+On release, verify npm packed licenses and update this NOTICE with any bundled
+third-party attribution required by those licenses.

@@ -1,0 +1,61 @@
+title = "LakeHouse public template gitleaks"
+
+# Free CLI config. CI and pre-commit both use this file.
+# Path allowlists keep the deny-list definitions themselves from matching.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Template meta paths that intentionally document deny patterns"
+paths = [
+  '''(?:^|/)\.gitleaks\.toml$''',
+  '''(?:^|/)\.gitleaks/''',
+  '''(?:^|/)CHANGELOG\.md$''',
+]
+
+[[rules]]
+id = "lh-client-ennead"
+description = "Placeholder / client firm name must not appear in public trees"
+regex = '''(?i)\bennead\b'''
+tags = ["client", "deny"]
+
+[[rules]]
+id = "lh-cad-rvt"
+description = "Revit project files must not be committed"
+path = '''(?i)\.rvt$'''
+regex = '''(?s).+'''
+tags = ["cad", "deny"]
+
+[[rules]]
+id = "lh-cad-3dm"
+description = "Rhino 3DM files must not be committed"
+path = '''(?i)\.3dm$'''
+regex = '''(?s).+'''
+tags = ["cad", "deny"]
+
+[[rules]]
+id = "lh-cad-dwg"
+description = "AutoCAD DWG files must not be committed"
+path = '''(?i)\.dwg$'''
+regex = '''(?s).+'''
+tags = ["cad", "deny"]
+
+[[rules]]
+id = "lh-dotenv-file"
+description = "Environment files must not be committed"
+path = '''(?i)(?:^|/)\.env(?:\.|$)'''
+regex = '''(?s).+'''
+tags = ["secrets", "deny"]
+
+[[rules]]
+id = "lh-internal-hostname"
+description = "Internal / non-public hostnames must not be committed"
+regex = '''(?i)\b(?:[a-z0-9-]+\.)+(?:internal|intranet|corp|lan|local)(?:\b|:)'''
+tags = ["hostname", "deny"]
+
+[[rules]]
+id = "lh-private-ipv4-hint"
+description = "RFC1918 host literals in connection strings are suspicious in public repos"
+regex = '''(?i)(?:https?|postgres|mysql|redis|amqp|mongodb)://[^\s"']*(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[0-1])\.\d{1,3}\.\d{1,3})'''
+tags = ["hostname", "deny"]

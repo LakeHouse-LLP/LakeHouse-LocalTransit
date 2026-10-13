@@ -1,0 +1,18 @@
+License pending
+
+This repository does not yet have a final open-source license.
+
+Recommended default for public projects under this brand: Apache License 2.0
+(https://www.apache.org/licenses/LICENSE-2.0).
+
+To adopt Apache-2.0:
+  1. Replace this entire LICENSE file with the Apache-2.0 license text
+     (or copy from https://www.apache.org/licenses/LICENSE-2.0.txt).
+  2. Update CITATION.cff `license:` via `npm run citation:gen` (or set Apache-2.0).
+  3. Update the README license badge / notice (regenerate with `npm run readme:gen`).
+  4. Record the change under CHANGELOG.md [Unreleased].
+
+Until a license is chosen by the repository owner (Sen / @zsenarchitect),
+all rights are reserved and contributions are accepted under the
+contributor's agreement that the chosen OSI license will apply retroactively
+to accepted contributions once LICENSE is finalized.

@@ -1,0 +1,72 @@
+# Action SHAs and org reusable-workflow catalog: .lakehouse/pins.json
+name: readme-weekly
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+  pull_request:
+  merge_group:
+
+permissions:
+  contents: read
+
+jobs:
+  regenerate:
+    name: regenerate-and-linkcheck
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Regenerate README AUTO blocks
+        run: npm run readme:gen
+        env:
+          ALLOW_TEMPLATE_REMOTE: "1"
+
+      - name: Link check (lychee)
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: >-
+            --config .lychee.toml
+            --verbose
+            --no-progress
+            README.md
+            docs
+            AGENTS.md
+            CONTRIBUTING.md
+            SECURITY.md
+            CHANGELOG.md
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open PR when README changed
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          commit-message: "docs: regenerate README AUTO blocks"
+          title: "docs: regenerate README AUTO blocks"
+          body: |
+            Weekly README regeneration.
+
+            - Refreshed `<!-- AUTO:* -->` blocks via `npm run readme:gen`
+            - Lychee link check ran in this workflow
+
+            Label: automated
+          branch: automation/readme-weekly
+          labels: automated, skip-changelog
+          signoff: true
+          delete-branch: true

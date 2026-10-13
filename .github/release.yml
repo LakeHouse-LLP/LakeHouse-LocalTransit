@@ -1,0 +1,37 @@
+# GitHub-generated release notes categories (Settings → Releases also respect this).
+changelog:
+  exclude:
+    labels:
+      - skip-changelog
+      - dependencies
+      - automated
+    authors:
+      - dependabot
+      - dependabot[bot]
+      - github-actions
+      - github-actions[bot]
+      - renovate
+      - renovate[bot]
+  categories:
+    - title: Breaking changes
+      labels:
+        - breaking
+        - breaking-change
+    - title: Added
+      labels:
+        - enhancement
+        - feature
+    - title: Fixed
+      labels:
+        - bug
+        - fix
+    - title: Security
+      labels:
+        - security
+    - title: Changed
+      labels:
+        - documentation
+        - chore
+    - title: Other
+      labels:
+        - "*"

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/zsenarchitect
+    about: Do not file public issues for vulnerabilities; follow SECURITY.md and contact the code owner
+  - name: Org runbook
+    url: https://github.com/zsenarchitect
+    about: Shared org defaults live in the organization .github repository (resolve owner via org.json; see docs/org.md)

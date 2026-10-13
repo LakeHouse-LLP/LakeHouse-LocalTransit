@@ -1,0 +1,62 @@
+# Welcome first-time issue/PR authors (public repos, GitHub-hosted).
+# Uses pull_request_target ONLY to post a comment (no checkout of PR code).
+# Never combine pull_request_target with actions/checkout of the PR head.
+# Action SHAs: .lakehouse/pins.json → actions/first-interaction
+#
+# first-interaction v3 expects snake_case inputs (issue_message, pr_message, repo_token).
+# pull_request (synchronize) lets same-repo PRs re-check this workflow from the PR branch;
+# pull_request_target still serves fork first-opens (workflow from the base branch).
+#
+# TODO: when org .github publishes a reusable welcome workflow, replace this
+# local workflow with uses: {owner}/.github/.github/workflows/...@ref
+
+name: welcome
+
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions: {}
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    # Skip bots (Dependabot, etc.). Fork PRs: prefer pull_request_target (write token).
+    # Same-repo: either event is fine. Inputs must be snake_case for first-interaction v3.
+    if: >
+      !endsWith(github.actor, '[bot]') &&
+      (
+        github.event_name == 'issues' ||
+        github.event_name == 'pull_request_target' ||
+        github.event.pull_request.head.repo.full_name == github.repository
+      )
+    steps:
+      - name: First interaction
+        # No checkout step — comment only (safe with pull_request_target).
+        uses: actions/first-interaction@1c4688942c71f71d4f5502a26ea67c331730fa4d # v3.1.0
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_message: |
+            Thanks for opening an issue with **LakeHouse Studio**. Welcome!
+
+            Please skim [CONTRIBUTING.md](https://github.com/${{ github.repository }}/blob/main/CONTRIBUTING.md) and [SUPPORT.md](https://github.com/${{ github.repository }}/blob/main/SUPPORT.md).
+            Looking for a place to start? Browse issues labeled `good first issue` or `help wanted`.
+
+            Questions fit better in **Discussions** (Q&A) when enabled.
+          pr_message: |
+            Thanks for your first pull request. Welcome to **LakeHouse Studio**!
+
+            A few reminders from [CONTRIBUTING.md](https://github.com/${{ github.repository }}/blob/main/CONTRIBUTING.md):
+            - Keep the PR focused; use the PR template (including Stack and What did we learn?)
+            - Add a changelog/changeset entry or the `skip-changelog` label
+            - Sign off commits (`git commit -s`) on public repos
+            - Sen will review when CI is green (GitHub-hosted runners only)
+
+            We appreciate you.

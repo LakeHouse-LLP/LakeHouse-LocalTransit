@@ -1,0 +1,76 @@
+# Dependencies
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.yarn/cache/
+.pnp.*
+
+# Build / coverage
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Logs and caches
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.cache/
+.turbo/
+.eslintcache
+.parcel-cache/
+.vite/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+credentials.json
+service-account*.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+*.swp
+*.swo
+*~
+
+# CAD / design binaries (never commit client models)
+*.rvt
+*.rfa
+*.rte
+*.3dm
+*.dwg
+*.dxf
+*.skp
+*.blend
+*.max
+*.psd
+*.ai
+
+# Test / tool output
+actionlint-*.txt
+lychee-out.md
+results.sarif
+scorecard-*.json
+
+# Local hooks override (installer writes into .git/hooks)
+.husky/_/
+
+# Release scratch
+*.tgz
+pack-*.tgz
+release-assets/

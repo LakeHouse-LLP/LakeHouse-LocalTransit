@@ -1,0 +1,13 @@
+{
+  "$schema": "./org.schema.json",
+  "orgName": "LakeHouse-LLP",
+  "brand": "LakeHouse",
+  "packageScope": "@lakehouse",
+  "domain": "REPLACE_WITH_CUSTOM_DOMAIN",
+  "notes": {
+    "packageScope": "Stable brand-based npm scope — do not derive from GitHub orgName (survives org rename).",
+    "domain": "Placeholder until Sen chooses/buys a custom domain. Never assume a real hostname; never use *.github.io.",
+    "brand": "LakeHouse (LakeHouse Studio styling).",
+    "orgName": "GitHub login/slug only. Prefer github.repository_owner at runtime; update this field on rename."
+  }
+}

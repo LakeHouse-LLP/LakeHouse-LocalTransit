@@ -1,0 +1,17 @@
+verbose = "info"
+no_progress = true
+# Mail checking is opt-in in lychee >= 0.18; keep it off for docs.
+include_mail = false
+accept = ["200", "204", "206", "429"]
+max_retries = 2
+timeout = 20
+exclude = [
+  '^file://',
+  '^http://localhost',
+  '^https://localhost',
+  '^https://api\.scorecard\.dev/',
+  # Sen-managed epic ledger (private / not always resolvable with GITHUB_TOKEN).
+  '^https://github\.com/SenZhang-Plus/SenZhang-Todo',
+  # Listing directories occasionally time out from GitHub-hosted runners.
+  '^https://www\.up-for-grabs\.net/',
+]

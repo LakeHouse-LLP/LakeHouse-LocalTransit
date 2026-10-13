@@ -1,0 +1,46 @@
+# Source of truth for repository labels (apply via UI or label-sync).
+- name: bug
+  color: "d73a4a"
+  description: Something is not working
+- name: enhancement
+  color: "a2eee8"
+  description: New feature or request
+- name: documentation
+  color: "0075ca"
+  description: Improvements or additions to documentation
+- name: good first issue
+  color: "7057ff"
+  description: Good for newcomers — see docs/starter-issues.md
+- name: help wanted
+  color: "008672"
+  description: Extra attention is needed — clear problem, open to community PRs
+- name: needs-triage
+  color: "fbca04"
+  description: Needs review / triage
+- name: question
+  color: "d876e3"
+  description: Further information is requested
+- name: dependencies
+  color: "0366d6"
+  description: Dependency updates
+- name: github-actions
+  color: "000000"
+  description: GitHub Actions related
+- name: npm
+  color: "cb3837"
+  description: npm packaging / JS dependencies
+- name: skip-changelog
+  color: "cfd3d7"
+  description: PR does not require a CHANGELOG entry
+- name: security
+  color: "ee0701"
+  description: Security-related change or report
+- name: automated
+  color: "0e8a16"
+  description: Opened by automation (readme regen, etc.)
+- name: breaking
+  color: "b60205"
+  description: Breaking change (call out migration in changeset / release notes)
+- name: release
+  color: "5319e7"
+  description: Release process / versioning

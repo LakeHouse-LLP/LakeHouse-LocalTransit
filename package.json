@@ -1,0 +1,55 @@
+{
+  "name": "@lakehouse/template-opensource",
+  "version": "0.2.1",
+  "description": "Public open-source project template (LakeHouse brand; see .lakehouse/org.json)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    ".lakehouse",
+    "docs",
+    "scripts",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "CITATION.cff",
+    "AGENTS.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "readme:gen": "node scripts/readme-gen.mjs",
+    "readme:check": "node scripts/readme-gen.mjs --check",
+    "citation:gen": "node scripts/citation-gen.mjs",
+    "citation:check": "node scripts/citation-gen.mjs --check",
+    "hooks:install": "node scripts/install-hooks.mjs",
+    "changeset": "changeset",
+    "changeset:version": "changeset version && npm install --package-lock-only",
+    "changeset:tag": "node scripts/release-tag.mjs",
+    "release:build": "node scripts/release-build.mjs",
+    "release:notes": "node scripts/release-notes.mjs",
+    "release:validate": "node scripts/check-release-files.mjs",
+    "check:remote": "node scripts/check-wrong-remote.mjs",
+    "check:tier": "node scripts/check-tier.mjs",
+    "check:runners": "node scripts/check-no-self-hosted.mjs",
+    "check:org-slug": "node scripts/check-no-hardcoded-org.mjs",
+    "check:pins": "node scripts/check-action-pins.mjs",
+    "check:org": "node scripts/check-org-domain.mjs",
+    "check:changelog": "node scripts/check-changelog.mjs",
+    "check:dco": "node scripts/check-dco.mjs",
+    "check:gitleaks": "node scripts/run-gitleaks.mjs",
+    "check:discoverability": "node scripts/discoverability-check.mjs",
+    "check:writing-style": "node scripts/check-writing-style.mjs",
+    "check:all": "npm run check:org && npm run check:remote && npm run check:tier && npm run check:runners && npm run check:org-slug && npm run check:pins && npm run readme:check && npm run citation:check && npm run release:validate && npm run check:discoverability && npm run check:writing-style && npm run check:gitleaks"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
+    "@changesets/get-github-info": "^1.0.1"
+  }
+}

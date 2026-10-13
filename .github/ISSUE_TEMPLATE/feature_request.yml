@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose an improvement (keep the org defaults unless an override is required)
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What gap exists today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should change? Note if this overrides an org default and why.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints
+      options:
+        - label: Remains zero-cost on GitHub Free
+          required: true
+        - label: Uses GitHub-hosted runners only (no self-hosted)
+          required: true
+        - label: Compatible with merge-commit + stacked PR workflow
+          required: true

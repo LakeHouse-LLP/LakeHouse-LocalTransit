@@ -1,0 +1,27 @@
+# Normalize text files to LF in the repository.
+* text=auto eol=lf
+
+# Windows wrapper scripts keep CRLF checkouts.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Treat CAD and binary assets as binary (never diff / merge as text).
+*.rvt binary
+*.3dm binary
+*.dwg binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tgz binary
+*.7z binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary

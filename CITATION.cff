@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: Template-LakeHouse-OpenSource
+message: >-
+  If you use this software, please cite it using the metadata in this file.
+  Projects created from this template should update title and authors to match
+  the new repository (plain project name, no Template- prefix).
+type: software
+authors:
+  - name: LakeHouse
+  - family-names: Zhang
+    given-names: Sen
+    alias: zsenarchitect
+    website: https://github.com/zsenarchitect
+# repository-code/url pending — set domain in .lakehouse/org.json (currently REPLACE_WITH_CUSTOM_DOMAIN)
+license: pending
+# Suggested license once finalized: Apache-2.0
+keywords:
+  - template
+  - open-source
+  - lakehouse
+  - "@lakehouse"
+abstract: >-
+  Public GitHub template for LakeHouse open-source projects. Provides
+  OpenSSF-aligned defaults, README generation, changelog policy, secret
+  scanning, and CI guards for zero-cost GitHub Free usage. Org identity lives
+  in .lakehouse/org.json (brand-stable packageScope + custom domain; domain placeholder until Sen chooses one).
