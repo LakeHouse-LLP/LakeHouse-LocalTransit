@@ -74,3 +74,4 @@ scorecard-*.json
 *.tgz
 pack-*.tgz
 release-assets/
+__pycache__/
