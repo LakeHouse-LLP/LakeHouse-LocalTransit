@@ -1,28 +1,38 @@
 # Bill of Materials
 
-Shopping list for the LocalTransit departure board (ESP32 + 64x64 HUB75 LED
-matrix). Everything below is plug-together: no soldering iron, no extra tools.
+Two build paths. The Raspberry Pi path is recommended if you already own a
+Pi 3/4/5: no new controller to buy, no soldering at all.
 
-## Core build (one 64x64 panel)
+## Path A: Raspberry Pi build (recommended)
 
 | # | Part | Spec | Price | Why this one |
 |---|------|------|-------|--------------|
-| 1 | ESP32 dev board, 30-pin | ESP32-WROOM-32, Type-C, CP2102/CH340 USB | ~$10.69 (Amazon) | Cheapest board the firmware is written for; 30-pin layout matches the adapter shield below |
-| 2 | 64x64 RGB LED matrix panel | P3, HUB75, indoor, 1/32 scan | ~$29.95 (Amazon) | The display. 64x64 fits 4 station rows + clock header at readable size |
-| 3 | HUB75 adapter board for ESP32 | Fits ESP32-DevKitC, must expose the **E address pin** | ~$10 (Amazon) | Skips all hand-wiring: ESP32 plugs in, ribbon cable plugs in. E pin is required for 64x64 panels (1/32 scan); most "HUB75 (E) kit" boards have it |
-| 4 | 5V 10A switching power supply | 5V, 10A, 2.1mm jack or screw terminal | ~$29.95 (Adafruit) | One 64x64 panel can draw up to 4A at full brightness; 10A leaves headroom and already covers a second panel if you extend later. Tighter budget: a 5V 4A supply (~$14.95, Adafruit, UL listed) is enough for a single panel |
-| 5 | HUB75 ribbon + power cable set | 16-pin IDC + 4-pin VH3.96 | usually included with the panel (~$2 spare) | Check the panel listing's "what's included"; Adafruit's panel ships both cables |
+| 1 | 64x64 RGB LED matrix panel | P3, HUB75, indoor, 1/32 scan | ~$64.95 (Adafruit) | The display. 64x64 fits 4 station rows + clock header at readable size |
+| 2 | 5V 10A switching power supply | 5V, 10A, 2.1mm jack or screw terminal | ~$29.95 (Adafruit) | One 64x64 panel can draw up to 4A at full brightness; 10A leaves headroom and already covers a second panel if you extend later |
+| 3 | Dupont jumper wires, female-to-female | 40-pack, ~20cm | ~$7 | 16 wires connect the Pi header to the panel's HUB75 input (wiring table in docs/pi-wiring.md) |
+| 4 | Raspberry Pi 3/4/5 | you already own one | $0 | Runs pi/pi_board.py, which reuses the tools/sources/ transit adapters |
 
-Estimated core total: **~$80** (with 10A supply) or **~$65** (with 4A supply).
+Estimated total: **~$102**. No soldering iron, no extra tools.
+
+## Path B: ESP32 build (no Pi on hand)
+
+| # | Part | Spec | Price | Why this one |
+|---|------|------|-------|--------------|
+| 1 | ESP32 dev board, 30-pin | ESP32-WROOM-32, Type-C | ~$10.69 | Cheapest board the firmware is written for |
+| 2 | 64x64 RGB LED matrix panel | P3, HUB75, indoor, 1/32 scan | ~$64.95 (Adafruit) | Same panel as Path A |
+| 3 | HUB75 adapter board for ESP32 | Fits ESP32-DevKitC, must expose the **E address pin** | ~$10 | Skips hand-wiring: ESP32 plugs in, ribbon cable plugs in. E pin is required for 64x64 panels (1/32 scan) |
+| 4 | 5V 10A switching power supply | 5V, 10A | ~$29.95 (Adafruit) | Same reasoning as Path A |
+| 5 | HUB75 ribbon + power cable set | 16-pin IDC + 4-pin VH3.96 | usually included with the panel | Check the panel listing's "what's included" |
+
+Estimated total: **~$115**. Firmware: firmware/path_board/path_board.ino.
 
 ## Why not the Adafruit Matrix Portal?
 
 The Matrix Portal (S3) is the nicer controller, but its Address E line ships as
 an **open solder jumper** on the back of the board. A 64x64 panel needs the E
 line, so you must solder-bridge that jumper (center pad to `8` for Adafruit's
-own 64x64 panel). With no soldering tools, the generic ESP32 + adapter shield
-above is the truly tool-free path: E is just a wire to GPIO 32, which the
-firmware already drives.
+own 64x64 panel). It is also out of stock at both Adafruit and DigiKey as of
+2026-10-13 (restock expected 2026-11-18).
 
 ## Extending later (no new controller needed)
 
