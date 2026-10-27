@@ -35,7 +35,7 @@
 | Package scope | `@lakehouse` |
 | Public domain | `REPLACE_WITH_CUSTOM_DOMAIN` (set a real custom domain in org.json; never assume a hostname; never `*.github.io`) |
 | GitHub owner | runtime: `github.repository_owner` or `.lakehouse/org.json` `orgName` |
-| Repository | `Template-LakeHouse-OpenSource` |
+| Repository | `LakeHouse-LocalTransit` |
 | Tier | `public` |
 | License | `pending` (suggested: Apache-2.0) |
 | Code owner | [@zsenarchitect](https://github.com/zsenarchitect) |
