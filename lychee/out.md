@@ -12,4 +12,4 @@
 | 🚫 Errors      | 0     |
 | ⛔ Unsupported | 0     |
 
-[Full Github Actions output](https://github.com/LakeHouse-LLP/LakeHouse-LocalTransit/actions/runs/40342182663?check_suite_focus=true)
+[Full Github Actions output](https://github.com/LakeHouse-LLP/LakeHouse-LocalTransit/actions/runs/41492857960?check_suite_focus=true)
